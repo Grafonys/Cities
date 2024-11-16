@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Cities</title>
+</head>
+<body>
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <div th:insert="~{fragments/admin_links::admin_links}" sec:authorize="hasRole('ADMIN')"></div>
+
+    <p
+       class="error_info"
+       th:if="${error} != null"
+       th:text="${error}"
+    ></p>
+
+    <form
+            class="save_form"
+            action="/admin/cities/save"
+            method="post"
+            sec:authorize="hasRole('ADMIN')"
+            th:object="${newCity}"
+    >
+        <input
+                type="text"
+                th:field="*{id}"
+                th:value="*{id}"
+                hidden
+                readonly
+        >
+        <input
+                class="text_input"
+                type="text"
+                th:field="*{name}"
+                th:value="*{name}"
+                placeholder="Name"
+                maxlength="170"
+                required
+        >
+        <input
+                class="text_input"
+                type="number"
+                th:field="*{population}"
+                th:value="*{population}"
+                placeholder="Population"
+                min="0"
+                max="2000000000"
+                required
+        >
+        <textarea
+                class="brief_history_input"
+                th:field="*{briefHistory}"
+                th:value="*{briefHistory}"
+                placeholder="Brief history"
+                rows="10"
+                cols="40"
+                maxlength="1000"
+                required
+        ></textarea>
+        <input
+                class="text_input"
+                type="text"
+                th:field="*{coordinates}"
+                th:value="*{coordinates}"
+                placeholder="Coordinates"
+                required
+        >
+        <button
+                class="save_btn"
+                type="submit"
+                th:text="${newCity.id} != null ? 'Update' : 'Insert'"
+        ></button>
+        <a href="/cities">Clear</a>
+    </form>
+
+    <p
+       class="error_info"
+       th:if="${search_error} != null"
+       th:text="${search_error}"
+    ></p>
+
+    <div th:replace="~{fragments/cities_search::search_form}"></div>
+
+    <table class="cities_table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Population</th>
+            <th>Brief history</th>
+            <th>Coordinates</th>
+            <th colspan="2" sec:authorize="hasRole('ADMIN')">Editing</th>
+        </tr>
+        <tr th:each="city : ${cities}">
+            <td th:text="${city.id}"></td>
+            <td th:text="${city.name}"></td>
+            <td th:text="${city.population}"></td>
+            <td th:text="${city.briefHistory}"></td>
+            <td th:text="${city.coordinates}"></td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{|/cities?id=${city.id}|}">Update</a>
+            </td>
+            <td sec:authorize="hasRole('ADMIN')">
+                <form th:action="@{|/admin/cities/delete?id=${city.id}|}" method="post">
+                    <button class="delete_btn" type="submit">&#10006;</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

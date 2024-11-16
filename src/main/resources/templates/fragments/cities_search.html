@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form
+          class="search_form"
+          th:fragment="search_form"
+          action="/filtered_cities"
+          method="get"
+    >
+        <div class="search_form_top">
+            <input
+                    class="search_input"
+                    type="text"
+                    name="search_input"
+                    placeholder="Search..."
+            >
+            <button class="search_btn" type="submit">Search</button>
+        </div>
+
+        <div class="search_form_bottom">
+            <p>Population</p>
+            <input
+                   class="population_input"
+                   type="number"
+                   name="min_population"
+                   min="0"
+            >
+            <p class="dash">-</p>
+            <input
+                   class="population_input"
+                   type="number"
+                   name="max_population"
+                   min="1"
+            >
+        </div>
+    </form>
+</body>
+</html>

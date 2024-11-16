@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Users</title>
+</head>
+<body>
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <div th:replace="~{fragments/admin_links::admin_links}"></div>
+
+    <p
+            class="error_info"
+            th:if="${error} != null"
+            th:text="${error}"
+    ></p>
+
+    <form
+            class="user_save_form"
+            action="/admin/users/save"
+            method="post"
+            th:object="${newUser}"
+    >
+        <div class="save_form_top">
+            <input
+                    type="text"
+                    th:field="*{id}"
+                    th:value="*{id}"
+                    hidden
+                    readonly
+            >
+            <input
+                    class="text_input"
+                    type="text"
+                    th:field="*{username}"
+                    th:value="*{username}"
+                    placeholder="Username"
+                    required
+            >
+            <input
+                    class="text_input"
+                    type="text"
+                    th:field="*{password}"
+                    th:value="*{password}"
+                    placeholder="Password"
+                    required
+            >
+
+            <div class="checkbox_container">
+                <p class="checkbox_name">Enabled</p>
+                <input
+                        class="checkbox"
+                        type="checkbox"
+                        th:field="*{isEnabled}"
+                        th:value="*{isEnabled}"
+                        th:checked="*{isEnabled}"
+                >
+            </div>
+
+            <div class="checkbox_container">
+                <p class="checkbox_name">Expired</p>
+                <input
+                        class="checkbox"
+                        type="checkbox"
+                        th:field="*{isAccountExpired}"
+                        th:value="*{isAccountExpired}"
+                        th:checked="*{isAccountExpired}"
+                >
+            </div>
+
+            <div class="checkbox_container">
+                <p class="checkbox_name">Locked</p>
+                <input
+                        class="checkbox"
+                        type="checkbox"
+                        th:field="*{isAccountLocked}"
+                        th:value="*{isAccountLocked}"
+                        th:checked="*{isAccountLocked}"
+                >
+            </div>
+
+            <div class="checkbox_container">
+                <p class="checkbox_name">Credentials expired</p>
+                <input
+                        class="checkbox"
+                        type="checkbox"
+                        th:field="*{isCredentialsExpired}"
+                        th:value="*{isCredentialsExpired}"
+                        th:checked="*{isCredentialsExpired}"
+                >
+            </div>
+        </div>
+
+
+        <div class="save_form_bottom">
+            <div class="role_container" th:each="role : ${roles}">
+                <p class="checkbox_name" th:text="${role.name}"></p>
+                <input
+                        class="checkbox"
+                        type="checkbox"
+                        name="role_ids"
+                        th:value="${role.id}"
+                        th:checked="${newUser.roles.contains(role)}"
+                >
+            </div>
+        </div>
+
+        <button
+                class="save_btn"
+                type="submit"
+                th:text="${newUser.id} != null ? 'Update' : 'Insert'"
+        ></button>
+        <a href="/admin/users">Clear</a>
+    </form>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Roles</th>
+            <th>isEnabled</th>
+            <th>isAccountExpired</th>
+            <th>isAccountLocked</th>
+            <th>isCredentialsExpired</th>
+            <th colspan="2">Editing</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.roles.toString()}"></td>
+            <td th:text="${user.isEnabled}"></td>
+            <td th:text="${user.isAccountExpired}"></td>
+            <td th:text="${user.isAccountLocked}"></td>
+            <td th:text="${user.isCredentialsExpired}"></td>
+            <td>
+                <a th:href="@{|/admin/users?id=${user.id}|}">Update</a>
+            </td>
+            <td>
+                <form th:action="@{|/admin/users/delete?id=${user.id}|}" method="post">
+                    <button class="delete_btn" type="submit">&#10006;</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

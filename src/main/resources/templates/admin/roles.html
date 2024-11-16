@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Roles</title>
+</head>
+<body>
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <div th:replace="~{fragments/admin_links::admin_links}"></div>
+
+    <p
+       class="error_info"
+       th:if="${error} != null"
+       th:text="${error}"
+    ></p>
+
+    <form
+            class="save_form"
+            action="/admin/roles/save"
+            method="post"
+            th:object="${newRole}"
+    >
+        <input
+                type="text"
+                th:field="*{id}"
+                th:value="*{id}"
+                hidden
+                readonly
+        >
+        <input
+                class="text_input"
+                type="text"
+                th:field="*{name}"
+                th:value="*{name}"
+                placeholder="Name"
+                required
+        >
+        <button
+                class="save_btn"
+                type="submit"
+                th:text="${newRole.id} != null ? 'Update' : 'Insert'"
+        ></button>
+        <a href="/admin/roles">Clear</a>
+    </form>
+
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th colspan="2">Editing</th>
+        </tr>
+        <tr th:each="role : ${roles}">
+            <td th:text="${role.id}"></td>
+            <td th:text="${role.name}"></td>
+            <td>
+                <a th:href="@{|/admin/roles?id=${role.id}|}">Update</a>
+            </td>
+            <td>
+                <form th:action="@{|/admin/roles/delete?id=${role.id}|}" method="post">
+                    <button class="delete_btn" type="submit">&#10006;</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title th:text="${authType}"></title>
+</head>
+<body>
+    <header th:replace="~{fragments/header::header}"></header>
+
+    <p class="error_info" th:if="${authError} != null" th:text="${authError}"></p>
+
+    <form
+            class="auth_form"
+            th:action="${authType.equals('Login') ? '/login' : '/registration'}"
+            method="post"
+    >
+        <input
+                class="auth_input"
+                type="text"
+                name="username"
+                placeholder="Username"
+                required
+        >
+        <input
+                class="auth_input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+        >
+        <button
+                class="submit_btn"
+                type="submit"
+                th:text="${authType.equals('Login') ? 'Login' : 'Register'}"
+        ></button>
+    </form>
+</body>
+</html>

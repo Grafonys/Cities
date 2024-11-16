@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header th:fragment="header">
+        <a class="home_link" href="/">Cities info</a>
+        <a class="admin_panel_link" sec:authorize="hasRole('ADMIN')" href="/admin">Admin panel</a>
+        <a class="header_link" sec:authorize="hasRole('ANONYMOUS')" href="/login">Login</a>
+        <a class="header_link" sec:authorize="!hasRole('ANONYMOUS')" href="/logout">Logout</a>
+        <a class="header_link" href="/registration">Registration</a>
+    </header>
+</body>
+</html>

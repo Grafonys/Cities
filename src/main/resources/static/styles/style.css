@@ -1,0 +1,325 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: gainsboro;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #494949;
+}
+
+.home_link {
+    color: black;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-left: 500px;
+    margin-right: 800px;
+}
+
+.admin_panel_link {
+    background-color: #424d4a;
+    color: #dcdcdc;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 8px;
+    margin-right: 20px;
+    border: 1px solid black;
+}
+
+.header_link {
+    background-color: #4698ff;
+    color: #dcdcdc;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 8px;
+    margin-right: 20px;
+    border: 1px solid black;
+}
+
+.admin_links {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto 50px auto;
+}
+
+.admin_link {
+    background-color: #e8e8e8;
+    color: black;
+    text-decoration: none;
+    display: block;
+    padding: 6px 12px;
+    border: 2px solid black;
+}
+
+.link_container {
+    text-align: center;
+}
+
+.link {
+    background-color: #99bc8f;
+    color: black;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 6px 10px;
+    border: 2px solid black;
+}
+
+.error_info {
+    color: red;
+    width: 300px;
+    font-size: 16px;
+    word-wrap: break-word;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border: 1px solid red;
+}
+
+.auth_form {
+    background-color: gainsboro;
+    width: 300px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+    border: 2px solid black;
+}
+
+.auth_input {
+    width: 60%;
+    height: 10%;
+    padding-left: 8px;
+    border: 2px solid black;
+}
+
+.submit_btn {
+    background-color: #2ea5d9;
+    color: #ebebeb;
+    letter-spacing: 2px;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: 2px solid black;
+}
+
+.save_form {
+    background-color: #ebebeb;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0 auto 50px auto;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.user_save_form {
+    background-color: #ebebeb;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 0 auto 50px auto;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.save_form_top {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.checkbox_container {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkbox {
+    background-color: #eaeaea;
+    width: 20px;
+    height: 20px;
+}
+
+.save_form_bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.role_container {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.text_input {
+    width: 200px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 5px;
+    margin-bottom: 20px;
+    border: 2px solid gray;
+}
+
+.brief_history_input {
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 200px;
+    max-height: 400px;
+    font-size: 18px;
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+}
+
+.save_btn {
+    background-color: #7da975;
+    color: #ebebeb;
+    letter-spacing: 1px;
+    width: 70px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border: 2px solid gainsboro;
+}
+
+.delete_btn {
+    background-color: white;
+    color: #be0101;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.cities_table {
+    font-size: 18px;
+    text-align: center;
+    margin: 50px auto 50px auto;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.cities_table th {
+    background-color: #6e9f70;
+}
+
+.cities_table td, th {
+    max-width: 300px;
+    word-wrap: break-word;
+    padding: 10px 20px;
+    border: 2px solid black;
+}
+
+.table {
+    font-size: 18px;
+    text-align: center;
+    margin: 50px auto 50px auto;
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+.table th {
+    background-color: #97a6a8;
+}
+
+.table td, th {
+    max-width: 250px;
+    word-wrap: break-word;
+    padding: 10px 20px;
+    border: 2px solid black;
+}
+
+.error_container {
+    background-color: #e6e6e6;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 40px;
+    margin: 50px auto 50px auto;
+    border: 2px solid #941d1d;
+}
+
+.error_text {
+    font-size: 28px;
+    word-break: break-word;
+    margin-bottom: 10px;
+}
+
+.error_code {
+    color: #525252;
+    font-size: 14px;
+}
+
+.search_form {
+    background-color: gainsboro;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+    margin: 0 auto 50px auto;
+    border: 2px solid gray;
+}
+
+.search_form_top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.search_input {
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 5px;
+    margin-right: 10px;
+    border: 2px solid black;
+}
+
+.search_btn {
+    background-color: #7c9ec0;
+    width: 70px;
+    height: 30px;
+    font-size: 18px;
+    border: 2px solid black;
+}
+
+.search_form_bottom {
+    display: flex;
+    align-items: center;
+}
+
+.population_input {
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 5px;
+    margin: 0 10px;
+    border: 2px solid black;
+}
+
+.dash {
+    font-size: 30px;
+}
